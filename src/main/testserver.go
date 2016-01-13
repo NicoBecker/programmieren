@@ -3,11 +3,12 @@ package main
 import (
 	"log"
 	"net/http"
+	"os/exec"
 )
 
 func mainHandler(w http.ResponseWriter, r *http.Request){
 	q := r.URL.Query()
-	name := q.Get("nam")
+	name := q.Get("name")
 	if name == "" {
 		name = "World"
 	}
@@ -17,17 +18,20 @@ func mainHandler(w http.ResponseWriter, r *http.Request){
 
 func dataHandler(w http.ResponseWriter, r *http.Request){
 	q := r.URL.Query()
-	name := q.Get("nam")
+	name := q.Get("name")
 	if name == "" {
 		name = "Planet"
 	}
-	responseString := "<html><body>Hello " + name + "</body></html>"
+	
+	cmd := exec.Command("tasklist")
+	stdout, _ := cmd.Output()
+	responseString := "<html><body>"+string(stdout)+"</body></html>"
 	w.Write([]byte(responseString))
 }
 
 func etcHandler(w http.ResponseWriter, r *http.Request){
 	q := r.URL.Query()
-	name := q.Get("nam")
+	name := q.Get("name")
 	if name == "" {
 		name = "System"
 	}

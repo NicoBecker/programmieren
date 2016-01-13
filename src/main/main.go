@@ -1,9 +1,10 @@
 package main
-
+/*
 import (
-//"fmt"
+"fmt"
 )
 
-//func main(){
-//	fmt.Println("Dies ist die Main Datei")
-//}
+func main(){
+	fmt.Println("Dies ist die Main Datei")
+}
+*/
