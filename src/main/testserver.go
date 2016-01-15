@@ -10,13 +10,20 @@ import (
 )
 
 func mainHandler(w http.ResponseWriter, r *http.Request){
-	q := r.URL.Query()
-	name := q.Get("name")
-	if name == "" {
-		name = "World"
-	}
-	responseString := "<html><body>Hello " + name + "</body></html>"
+//	q := r.URL.Query()
+	x := "Test1blablubb"
+	table := writeTable(x)
+	
+	
+	
+	
+	standardausgabe := "<html><head><style>table, td, th { border: 1px solid black; }</style></head><h1>Hauptseite mit allen wichtigen Informationen die der Observer darstellt</h1>"
+	responseString := standardausgabe+"<body>"+table+"</body></html>"
 	w.Write([]byte(responseString))
+}
+func writeTable(a string) string{
+	table := "<table><tr><th>Applikation</th><th>Startbefehl</th><th>Stopbefehl</th></tr><tr><th>" + a + "</th><th>Startbefehl1</th><th>Stopbefehl1</th></tr><tr><th>Applikation2</th><th>Startbefehl2</th><th>Stopbefehl2</th></tr><tr><th>Applikation3</th><th>Startbefehl3</th><th>Stopbefehl3</th></tr></table>"
+	return table
 }
 
 func dataHandler(w http.ResponseWriter, r *http.Request){
@@ -29,6 +36,7 @@ func dataHandler(w http.ResponseWriter, r *http.Request){
 	stdout, _ := cmd.Output()
 	responseString := "<html><body>"+string(stdout)+"</body></html>"
 	w.Write([]byte(responseString))
+	mainHandler(w, r)
 }
 
 func etcHandler(w http.ResponseWriter, r *http.Request){
@@ -67,7 +75,7 @@ func etcHandler(w http.ResponseWriter, r *http.Request){
 		responseString := "<html><header><h1>etcHandler</h1></header><body>" + txtfmt + "</body></html>"
 		w.Write([]byte(responseString))
 	}
-	//fmt.Print("Enter Text: ")
+
 	}
 	
 }
