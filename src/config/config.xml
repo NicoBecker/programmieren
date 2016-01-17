@@ -1,18 +1,14 @@
 <Applications>
-<Application app="echo">
-<Start>..\\src\\apps\\echo.exe</Start>
-<Stop>/home/user/bin/myWorkerClient -stop {{port}}</Stop>
+<Application app="Testapp2">
+<Start>java -jar ..\\apps\\TestApp2.jar -start</Start>
+<Stop>java -jar ..\\apps\\TestApp2.jar -stop</Stop>
 </Application>
-<Application app="helloworld">
-<Start>..\\src\\apps\\helloworld.exe</Start>
-<Stop>/home/user/bin/myWorkerClient -stop {{port}}</Stop>
+<Application app="Testapp3">
+<Start>java -jar ..\\apps\\TestApp3.jar -start</Start>
+<Stop>java -jar ..\\apps\\TestApp3.jar -stop</Stop>
 </Application>
 <Application app="Testapp">
-<Start>java -jar ..\\src\\apps\\TestApp.jar -start</Start>
-<Stop>java -jar ..\\src\\apps\\TestApp.jar -stop</Stop>
-</Application>
-<Application app="myServer4">
-<Start>/home/user/bin/myWorkerClient -start</Start>
-<Stop>/home/user/bin/myWorkerClient -stop {{port}}</Stop>
+<Start>java -jar ..\\apps\\TestApp.jar -start</Start>
+<Stop>java -jar ..\\apps\\TestApp.jar -stop</Stop>
 </Application>
 </Applications>
